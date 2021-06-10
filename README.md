@@ -16,30 +16,34 @@ tabulate
 
 ## Get started
 ```bash
-git clone https://github.com/TorRient/Video-Summarization-Pytorch
-cd Video-Summarization-Pytorch
 mkdir dataset
 ```
 
-1. Prepare dataset
+1. Requirements to Generate Dataset
 
 Put your videos in folder dataset
+```bash
+Create a folder name dataset and put videos in this folder
+```
+
+2. Dataset Generation
 ```bash
 python create_data.py --input dataset --output dataset/data.h5
 ```
 
-2. Make splits
+3. Find Determinant of I and J
 ```bash
-python create_split.py -d dataset/data.h5 --save-dir dataset --save-name splits  --num-splits 5
+python test.py -d dataset/data.h5
 ```
 
-## How to train
+4. Diversity and Representation score calculation
 ```bash
-python train_video_summarisation.py -d dataset/data.h5
+python test.py -d dataset/data.h5
 ```
 
-## How to test
+5. Reducing redundant frames 
 ```bash
-python video_summary.py --input path-to-video
+python test.py -d dataset/data.h5
 ```
-Video summarization will be saved folder output/
+
+Video summarization will be saved folder log/final_summary
