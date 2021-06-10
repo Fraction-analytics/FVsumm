@@ -1,16 +1,11 @@
-# Deep Reinforcement Learning for Unsupervised Video Summarization with Diversity-Representativeness Reward.
-Implement with python=3.x https://github.com/KaiyangZhou/pytorch-vsumm-reinforce
-
-<div align="center">
-  <img src="img/pipeline.jpg" alt="train" width="80%">
-</div>
+# Deep Reinforcement Learning for Unsupervised Video Summarization with Determinantal point process.
+Implement with python=3.x 
 
 ## Requirement
+
 python=3.x
 
 Pytorch
-
-GPU
 
 tabulate
 
@@ -20,11 +15,9 @@ mkdir dataset
 ```
 
 1. Requirements to Generate Dataset
-
-Put your videos in folder dataset
-```bash
-Create a folder name dataset and put videos in this folder
-```
+  ```
+  Create a folder name dataset and put mp4 video files 
+  ```
 
 2. Dataset Generation
 ```bash
