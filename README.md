@@ -39,4 +39,4 @@ python test.py -d dataset/data.h5
 python test.py -d dataset/data.h5
 ```
 
-Video summarization will be saved folder log/final_summary
+Video summarization will be saved folder log / final_summary
