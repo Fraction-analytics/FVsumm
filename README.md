@@ -15,7 +15,7 @@ mkdir dataset and put mp4 video files
 ```
 ## 2. Dataset Generation
 ```bash
-python create_data.py --input dataset --output dataset/data.h5
+python create_data.py --input videos --output dataset/data.h5
 ```
 
 ## 3. Find Determinant 

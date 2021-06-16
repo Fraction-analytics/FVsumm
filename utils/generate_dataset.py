@@ -31,7 +31,7 @@ class Generate_Dataset:
         # import pdb;pdb.set_trace()
         if os.path.isdir(video_path):
             self.video_path = video_path
-            fileExt = r".mp4"
+            fileExt = r".mp4",".avi",".flv"
             self.video_list = [_ for _ in os.listdir(video_path) if _.endswith(fileExt)]
             self.video_list.sort()
         else:
@@ -113,25 +113,27 @@ class Generate_Dataset:
             video_feat = None
             video_feat_for_train = None
             for frame_idx in tqdm(range(n_frames-1)):
-                success, frame = video_capture.read()
-                if success:
-                    frame_feat = self._extract_feature(frame)
 
-                    if frame_idx % 15 == 0:
+                success, frame = video_capture.read()
+                if frame_idx % 15 == 0:
+
+                    if success:
+
+                        frame_feat = self._extract_feature(frame)                    
                         picks.append(frame_idx)
 
                         if video_feat_for_train is None:
                             video_feat_for_train = frame_feat
                         else:
                             video_feat_for_train = np.vstack((video_feat_for_train, frame_feat))
-
-                    if video_feat is None:
-                        video_feat = frame_feat
+                        if video_feat is None:
+                    
+                            video_feat = frame_feat
+                        else:
+                            video_feat = np.vstack((video_feat, frame_feat))
+                    # import pdb;pdb.set_trace()
                     else:
-                        video_feat = np.vstack((video_feat, frame_feat))
-                else:
-                    break
-
+                        break
             video_capture.release()
 
             change_points, n_frame_per_seg = self._get_change_points(video_feat, n_frames, fps)
